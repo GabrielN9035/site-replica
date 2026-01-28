@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "slash",
-    "slug": "slash",
+    "name": "daredeveil",
+    "slug": "daredeveil",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "slash",
+    "scheme": "daredeveil",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {

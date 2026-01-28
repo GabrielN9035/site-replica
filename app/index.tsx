@@ -1,3 +1,5 @@
+import { Header } from "@/componentes/header";
+import { router } from "expo-router";
 import {
   Image,
   ScrollView,
@@ -9,18 +11,24 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomePage() {
+  const visit = () => {
+    router.push("/list");
+  };
   return (
     <SafeAreaView style={s.wrap}>
+      <Header image={require("@/assets/images/")} />
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={s.body}>
           <Text style={s.title}>Tela Inicial</Text>
-          <Text style={s.paragraph}>Meu primeiro APP usando react</Text>
+          <Text style={s.paragraph}>
+            Meu primeiro APP usando react-native e expo
+          </Text>
         </View>
         <View style={s.body2}>
-          <Image source={require("../assets/images/react-logo.png")} />
+          <Image source={require("@/assets/images/gibson.jpg")} />
         </View>
         <View style={s.body2}>
-          <TouchableOpacity style={s.btn}>
+          <TouchableOpacity style={s.btn} onPress={visit}>
             <Text style={s.btnText}>Ir para lista</Text>
           </TouchableOpacity>
         </View>
@@ -28,41 +36,40 @@ export default function HomePage() {
     </SafeAreaView>
   );
 }
-
-// Dentro do const stylesheet fazemos o css
 const s = StyleSheet.create({
   wrap: {
     flex: 1,
   },
   body: {
     backgroundColor: "#090909",
+    gap: 25,
   },
   body2: {
     alignItems: "center",
   },
   title: {
-    color: "#534d7a",
+    color: "#ffffff",
     textAlign: "center",
     fontSize: 30,
+    fontWeight: 700,
     padding: 20,
   },
   paragraph: {
     color: "gray",
-    paddingHorizontal: 30,
     textAlign: "center",
-    fontSize: 25,
+    fontSize: 22,
     paddingBottom: 15,
   },
   btn: {
-    shadowColor: "#370841",
+    shadowColor: "#000",
     shadowOffset: {
-      width: 2,
+      width: 0,
       height: 2,
     },
-    shadowOpacity: 0.95,
+    shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5,
-    backgroundColor: "#760c96",
+    elevation: 4,
+    backgroundColor: "#06525f",
     width: 200,
     height: 60,
     alignItems: "center",
