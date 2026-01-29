@@ -16,7 +16,7 @@ export default function HomePage() {
   };
   return (
     <SafeAreaView style={s.wrap}>
-      <Header image={require("@/assets/images/")} />
+      <Header image={require("@/assets/images/iconCar.webp")} />
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={s.body}>
           <Text style={s.title}>Tela Inicial</Text>
@@ -25,7 +25,7 @@ export default function HomePage() {
           </Text>
         </View>
         <View style={s.body2}>
-          <Image source={require("@/assets/images/gibson.jpg")} />
+          <Image source={require("@/assets/images/react-logo.png")} />
         </View>
         <View style={s.body2}>
           <TouchableOpacity style={s.btn} onPress={visit}>
