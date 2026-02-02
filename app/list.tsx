@@ -1,45 +1,65 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import dados from "@/assets/constants/mock";
+import { Header } from "@/components/header";
+import { Item } from "@/components/item";
+import { router } from "expo-router";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import dados from "../assets/constants/mock";
-import { Header } from "../components/header";
 
 export default function List() {
+  const voltar = () => {
+    router.push("/");
+  };
+
+  const proximo = () => {
+    router.pull("/");
+  };
+
   return (
-    <SafeAreaView style={s.wrap}>
-      <Header image={require("../assets/images/45.jpg")} />
-
-      <View style={s.container}>
-        <Text style={s.title}>Lista de itens</Text>
+    <>
+      <Header image={require("@/assets/images/iconCar.webp")} />
+      <View>
+        <TouchableOpacity onPress={voltar}>
+          <Text style={s.backBtn}>⬅️</Text>
+          <TouchableOpacity onPress={proximo}>
+            <Text style={s.nextBtn}>➡️</Text>
+          </TouchableOpacity>
+        </TouchableOpacity>
       </View>
-
-      <FlatList
-        data={dados}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <Text style={s.item}>{item.name}</Text>}
-      />
-    </SafeAreaView>
+      <SafeAreaView style={s.wrapList}>
+        <FlatList
+          data={dados}
+          renderItem={({ item }) => (
+            <Item
+              name={item.nome}
+              age={item.idade}
+              image={item.imagem}
+              date={item.nascimento}
+            />
+          )}
+        ></FlatList>
+      </SafeAreaView>
+    </>
   );
 }
 
 const s = StyleSheet.create({
-  wrap: {
+  wrapList: {
     flex: 1,
-    backgroundColor: "#090909",
   },
-  container: {
-    alignItems: "center",
-    justifyContent: "center",
-    marginVertical: 10,
+  backBtn: {
+    fontSize: 40,
+    position: "absolute",
+    top: -400,
   },
-  title: {
-    color: "#ffffff",
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  item: {
-    color: "#ffffff",
-    fontSize: 18,
-    paddingVertical: 5,
-    paddingHorizontal: 10,
+  nextBtn: {
+    fontSize: 40,
+    position: "absolute",
+    top: -350,
   },
 });
